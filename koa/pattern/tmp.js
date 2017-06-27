@@ -1,4 +1,4 @@
-const nunjucks = require('nunjucks');
+const nunjucks = require('nunjucks'); //模板引擎
 function createEnv(path, opts) {
     var
         autoescape = opts.autoescape && true,
@@ -29,12 +29,13 @@ var env = createEnv('views', {
         }
     }
 })
-var tmp = function() {
-    return async (ctx,next) => {
-        console.log('返回中间件');
-        ctx.render = function(file,data){
-            ctx.response.body = env.render(file,data);
+var tmp = function () {
+    return async(ctx, next) => {
+        //给ctx添加render方法 
+        ctx.render = function (file, data) {
+            ctx.response.body = env.render(file, data);
         }
+        //继续执行后面的中间件
         await next();
     }
 }
