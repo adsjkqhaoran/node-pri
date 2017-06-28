@@ -24,15 +24,19 @@ var define = (tables, attrs) => {
     };
     //添加timestamps
     return sequelize.define(tables, attrs, {
-        timestamps: true
+        timestamps : true
     });
 }
 var exp = {
     define: define,
-    sycn : () => {
+    sync : () => {
+        console.log('start synce');
         sequelize.sync({
             force: true
+        }).then(function(){
+            console.log('syncing');
         })
+         console.log('synced');
     }
 };
 const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN'];

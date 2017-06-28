@@ -22,7 +22,8 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
 var Users = sequelize.define('users', {
     id: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement : true
     },
     name: {
         type: Sequelize.STRING
@@ -35,6 +36,8 @@ var Users = sequelize.define('users', {
 });
 
 (async() => {
+    //创建库
+    await sequelize.sync({force:true});
     //增加
     var insert = await Users.create({
         name : 'hx'+ Math.random(),
