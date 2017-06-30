@@ -1,0 +1,52 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+form{
+   width: 500px;
+   display: block;
+   margin: auto;
+
+}
+input[type=text]{
+    border: 1px solid #eee ;
+    height: 30px;
+    width: 300px;
+    margin-top: 30px;
+}
+input[type=submit]{
+    width: 300px;
+    height: 30px;
+    background: #00dbdb;
+    color: #fff;
+    border:none;
+    margin-top: 30px;
+}
+.wechat{
+    height:400px;
+    width: 500px;
+    display: block;
+    margin: auto;
+    border: 1px solid #eee;
+}
+.left{
+    width: 350px;
+    display: inline-block;
+    float: left;
+    height:400px;
+
+}
+.right{
+    width: 150px;
+    display: inline-block;
+    float: right;
+    height:400px;
+    background: #00b3db;
+}
+.tit{
+    width: 100%;
+    background: #eee;
+    color: #804040;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 1em;
+}

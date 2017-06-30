@@ -1,0 +1,28 @@
+<html>
+    <link rel="stylesheet" href="css/index.css">
+    <body>
+       <div class="wechat">
+           <div class="tit"> {{user}} </div>
+           <div class="left">
+                <div class="tit">聊天室</div>
+                <div class="container"></div>
+                <div><input type="text" id='inpcon'><input type="submit" id="pull"></div>
+           </div>
+           <div class="right">
+                <div class="tit">用户组</div>
+           </div>
+       </div>
+    </body>
+</html>
+<script>
+  var socket =  new WebSocket('ws://127.0.0.1:3000/wechat');
+  socket.onmessage = function(msg){
+    console.log(msg.data);
+  }
+  socket.onopen = function(){
+      document.querySelector('#pull').onclick = function(){
+          var inpcon = document.querySelector('#inpcon').value;
+          socket.send(inpcon);
+      } 
+  }
+</script>
