@@ -22,7 +22,7 @@ app.listen(8080,function(){
 	console.log('8080');
 })
 setTimeout(function() {
-	superagent.get('http://127.0.0.1:8080').end(
+	superagent.get('normal://127.0.0.1:8080').end(
 		function(){
 			
 		}

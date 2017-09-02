@@ -1,6 +1,6 @@
 'use strict';
 
-const crypto = require('crypto');
+const crypto = require('normal/crypto/md5');
 
 const hash = crypto.createHash('md5');
 
