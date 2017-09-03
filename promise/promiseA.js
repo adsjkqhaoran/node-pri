@@ -6,7 +6,7 @@ var Promise = function(){
      
 }
 // 相当于
-// Promise.prototype.prototype = new events.EventEmitter();
+// Promise.prototype = new events.EventEmitter();
 // Promise.prototype.construct = Promise;
 util.inherits(Promise,events.EventEmitter);
 Promise.prototype.then = function(fulfilledHandle,unfulfilledHandle,errorHandle){

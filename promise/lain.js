@@ -1,7 +1,8 @@
 //目标:实现先完成一个异步 再完成下一个异步的链式功能
 //思路:1先通过then把所有方法，保存到第一个promise的queue队列里,
 //     2 接着每个异步完成后都返回一个新的promise
-//     3 把上一个promise的 queue 去除首个 然后 传入新的promise中 
+//     3 把上一个promise的 queue 去除首个 然后 传入新的promise中
+//所以promise是不同的promise 但是队列确实同一条队列
 var util = require('util');
 var fs = require('fs');
 var path = require('path');
