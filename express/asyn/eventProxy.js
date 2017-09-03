@@ -1,4 +1,4 @@
-let eventproxy = require('eventproxy');
+let eventproxy = require('eventProxy');
 let superagent = require('superagent');
 let cheerio = require('cheerio');
 
@@ -24,6 +24,7 @@ app.get('/',function(req,res){
 		// $('.changes').find('span').eq(0).html;
 		//并发控制
 		let eq = new eventproxy();
+		//enterLoad 被触发topicUrl.length次后执行 result包含所有次数的数据
 		eq.after('enterLoad',topicUrl.length,function(result){
 			res.send(result.join('|'));
 		})
