@@ -47,14 +47,17 @@ Deferred.prototype.callback = function(){
 var readFile1 = function(file,encoding){
     var deferred = new Deferred();
     fs.readFile(file,encoding,deferred.callback());
+    // deferred.resolve();
     return deferred.promise;
 }
 var readFile2 = function(file,encoding){
     var deferred = new Deferred();
     fs.readFile(file,encoding,deferred.callback());
+    // deferred.resolve();
     return deferred.promise;
 }
 readFile1(path.join(__dirname,'file1.txt'),'utf8').then(function(file1){
+    // console.log('fix');
     return readFile2(file1.trim(),'utf8');
 }).then(function(file2){
     console.log(file2);
