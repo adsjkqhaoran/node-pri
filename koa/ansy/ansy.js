@@ -1,7 +1,7 @@
 const Koa = require('koa');
 
 const app = new Koa();
-
+//其实async 与 await 就是 generator 和 yield的语法糖 详细实现原理见 yield／thunk
 app.use(async (ctx, next) => {
     console.log(`${ctx.request.method} ${ctx.request.url}`); // 打印URL
     await next(); // 调用下一个middleware
