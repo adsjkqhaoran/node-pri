@@ -1,7 +1,8 @@
 let fs = require('fs');
 let router = require('koa-router')();
 let path = require('path');
-
+// console.log(__dirname); 代码所在目录
+// console.log(process.cwd()); 程序根目录
 //遍历所有文件
 let readController = function(path,callback){
     let files = fs.readdirSync(path);
@@ -27,6 +28,7 @@ let loadController = function(path,item){
 
     }
 }
+
 module.exports = function(){
     let controllerPath = path.resolve(process.cwd(),'controllers');
     readController(controllerPath,loadController);
