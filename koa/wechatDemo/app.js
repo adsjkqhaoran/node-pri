@@ -21,9 +21,10 @@ router.get('/', async(ctx, next) => {
 });
 router.post('/login', async(ctx, next) => {
        var name = ctx.request.body.name;
-    //    http的header字符集支持US-ASCII子集的字符集[巨坑]
-       name = Buffer(name).toString('base64');
-       ctx.cookies.set('user',name);
+    //    http的header字符集支持US-ASCII子集的字符集,故设置中文是'utf8'时就会报上面错误[巨坑]
+       name = new Buffer(name).toString('base64');
+       console.log(name);
+       ctx.cookies.set('user',name,{'httpOnly':false});
     //    name =Buffer(ctx.cookies.get('user'),'base64').toString();
        ctx.render('wechat.html',{user:ctx.request.body.name});
 });
@@ -40,9 +41,10 @@ var wss = new WebSocketServer({
 wss.on('connection',function(ws,req){
     console.log('[SERVER] connecting');
     if(req.headers){
+        //不知为什么socket带不上cookies
         var cookies = new Cookies(req,null);
         var name = cookies.get('user');
-        name = Buffer(name,'base64').toString();
+        //name = new Buffer(name,'base64').toString();
     }
     ws.on('message',function(msg){
         console.log(msg);
