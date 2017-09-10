@@ -2,6 +2,7 @@ let path = require('path');
 let fs = require('fs');
 let http = require('http');
 let url  = require('url');
+let mime = require('mime');
 //使用fs.stat检测文件状态 并把文件以流管道的形式输出
 //下面的写法甚至可以直接输出正在运行的该js文件感觉有点危险
 
@@ -25,7 +26,8 @@ let httpServer = http.createServer(function(request,response){
 
     fs.stat(filePath,function(err,data){
         if(!err&&data.isFile()){
-            response.writeHead(200,{'Content-Type':'text/'+tail});
+            //通过mime插件来获取文件类型
+            response.writeHead(200,{'Content-Type':mime.lookup(filePath)});
             fs.createReadStream(filePath).pipe(response);
         }else{
             notFound();
